@@ -19,7 +19,7 @@ var postRoutes = require("./routes/posts"),
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useUnifiedTopology', true);
 // mongoose.connect("mongodb://localhost/Daily_post");
-mongoose.connect("mongodb+srv://frank:mongodb@daily-post-lqanc.mongodb.net/test?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://frank:passwordxhh@daily-post-lqanc.mongodb.net/test?retryWrites=true&w=majority")
 seedDB();
 
 app.use(bodyParser.urlencoded({extended:true}));
