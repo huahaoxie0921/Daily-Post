@@ -1,0 +1,57 @@
+<%- include("../partials/header") %>
+<div class="container">
+    <div class="row">
+<!--         <div class="col-md-3">
+            <p class="lead">Daily Post</p>
+            <div class="list-grounp">
+                <li class="list-group-item active">Info1</li>
+                <li class="list-group-item">Info2</li>
+                <li class="list-group-item">Info3</li>
+            </div>
+            <h3>map</h3>
+        </div> -->
+    
+        <div class="col-md-12">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= post.image %>">
+                <div class="caption-full">
+                    <!-- <h4 class="pull-right">$9.00/night(**TBM** GET FROM DB)</h4> -->
+                    <h4><a><%=post.name%></a></h4>
+                    <p><%= post.description%></p>
+                    <em><p>Submitted By <%= post.author.username %></p></em>
+                    
+                    <% if(currentUser && post.author.id.equals(currentUser._id)) {%>
+                        <a class="btn btn-xs btn-warning" href="/index/<%= post._id %>/edit">Edit</a>
+                        <form class="delete-form" action="/index/<%= post._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">DELETE</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="well">
+                <div class="text-right">
+                    <a href="/index/<%= post._id %>/comments/new" class="btn btn-success">Leave a Comment</a>
+                </div>
+                <hr>
+                <% post.comments.forEach(function(comment){ %>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong><%=comment.author.username%></strong>
+                        <span class="pull-right">10 days ago(**TBM**)</span>
+                        <p><%=comment.text%></p>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)) {%>
+                        <a class="btn btn-xs btn-warning" href="/index/<%= post._id %>/comments/<%= comment._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/index/<%= post._id %>/comments/<%= comment._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">DELETE</button>
+                        </form>
+                        <% } %>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

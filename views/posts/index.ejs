@@ -1,0 +1,33 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+<header class="jumbotron">
+    <div class="container">
+    <h1>Welcome To Daily Post!</h1>
+    <p>Record and Share your daily mood.</p>
+    <p>
+    <a class="btn btn-primary btn-large" href="/index/new">Add New Post</a>
+    </p>
+    </div>
+</header>
+
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <% posts.forEach(function(post){%>
+    <div class="col-md-3 col-sm-6">
+        <div class="thumbnail">
+            <img src="<%=post.image%>">
+            <div class="caption">
+                <h4><%=post.name%></h4>
+                <!-- <a href="/index/1"><button class="btn btn-primary btn-md">
+                detail
+                </button></a> -->
+            </div>
+            <a href="/index/<%=post.id%>" class="btn btn-primary">More info</a>
+        </div>
+    </div>  
+    <% }) %>
+</div>
+</div>
+
+
+<%- include("../partials/footer") %>
