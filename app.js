@@ -1,5 +1,6 @@
 var express = require("express"),
     app = express(),
+    port = process.env.PORT || 3000,
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
     flash = require("connect-flash"),
@@ -27,7 +28,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log("The Daily Post Server Has Started!!!");
 });
 
