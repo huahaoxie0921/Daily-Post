@@ -20,10 +20,10 @@ var url = process.env.DATABASEURL || "mongodb://localhost/Daily_post";
 
 mongoose.connect(url, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useUnifiedTopology: true
 }).then(function(){
-    console.log("Connected to ", url);
+    console.log("Connected to DB");
 }).catch(function(err) {
     console.log(err);
 })
